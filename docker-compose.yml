@@ -1,0 +1,18 @@
+services:
+  openvpn_tor_server:
+    build: .
+    container_name: openvpn_tor_server
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    volumes:
+      - tor_hidden_service_data:/var/lib/tor/openvpn_service
+      - ./torrc:/etc/tor/torrc:ro
+      - ./openvpn_data:/etc/openvpn
+    ports:
+      - "1195:1195"
+    restart: unless-stopped
+
+volumes:
+  tor_hidden_service_data:

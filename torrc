@@ -1,0 +1,2 @@
+HiddenServiceDir /var/lib/tor/openvpn_service
+HiddenServicePort 1195 127.0.0.1:1195
